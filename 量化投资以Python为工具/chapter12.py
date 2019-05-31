@@ -3,11 +3,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from MyPackage.MyClass_Path import MyClass_Path
-__Class_Path__=MyClass_Path("\\QuantitativeInvestmentUsingPython\\Self-Practice")
+__Class_Path__=MyClass_Path("\\量化投资以Python为工具")
 from MyPackage.MyClass_Plot import MyClass_Figure
+datapath="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答\\data1\\Part1\\012"
 
 #1
-datapath1=__Class_Path__.GetPath(1,"\\习题解答\\data1\\Part1\\012\\Money.csv")
+datapath1=datapath+"\\Money.csv"
 Canada=pd.read_csv(datapath1,index_col="date")
 money=Canada.m
 gdp=Canada.y
@@ -27,7 +28,7 @@ axis3.plot(Money.r)
 plt.show()
 
 #2
-datapath2=__Class_Path__.GetPath(1,"\\习题解答\\data1\\Part1\\012\\Journals.csv")
+datapath2=datapath+"\\Journals.csv"
 JourData=pd.read_csv(datapath2)
 Class_Figure1=MyClass_Figure()
 Class_Figure1.PlotScatter(0,JourData.citestot,JourData.libprice,"Scatter",PlotLabel=["JourData","citestot","libprice"])
@@ -40,7 +41,7 @@ plt.ylabel('Price')
 plt.show()
 
 #3
-datapath3=__Class_Path__.GetPath(1,"\\习题解答\\data1\\Part1\\012\\mtcars.csv")
+datapath3=datapath+"\\mtcars.csv"
 cars=pd.read_csv(datapath3)
 
 # ---
@@ -61,7 +62,7 @@ plt.show()
 
 
 #4
-datapath4=__Class_Path__.GetPath(1,"\\习题解答\\data1\\Part1\\012\\Arthritis.csv")
+datapath4=datapath+"\\Arthritis.csv"
 data=pd.read_csv(datapath4)
 age=data.Age
 Class_Figure4=MyClass_Figure()
