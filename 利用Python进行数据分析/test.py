@@ -8,7 +8,8 @@ from MyPackage.MyClass_Path import MyClass_Path
 __Class_Path__=MyClass_Path("\\利用Python进行数据分析")
 from MyPackage.MyClass_Plot import MyClass_Figure
 Class_Figure=MyClass_Figure()
-#--------------------------------------------------------------------
-
+#---------------------------------------------------------------
+my_arr=np.arange(1000000)
+my_list=list(range(1000000))
 
 
