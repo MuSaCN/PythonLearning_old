@@ -4,28 +4,26 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels as sm
-from MyPackage.MyClass_Path import MyClass_Path
-__Class_Path__=MyClass_Path("\\利用Python进行数据分析")
-from MyPackage.MyClass_Plot import MyClass_Figure
-Class_Figure=MyClass_Figure()
+import MyPackage
+__mypath__=MyPackage.MyClass_Path.MyClass_Path("\\利用Python进行数据分析")
+myplt=MyPackage.MyClass_Plot.MyClass_Figure()
+mynp=MyPackage.MyClass_Array.MyClass_NumPy()
 #------------------------------------------
-m=np.ones([3,3])
-a=np.array([0,1,1])
-b=np.array([0,1,0])
-a | b
-b=np.array([[1]])
-np.add(a,m)
-m+b
-c=np.array([[1]])
-m+c
-d=np.array([[[1],2]])
-m+d
-x=np.linspace(0,5,50)
-y=np.linspace(0,5,50)[:,np.newaxis]
-z=np.sin(x)**10+np.cos(10+y*x)*np.cos(x)
-z
-plt.imshow(z)
-plt.show()
+a=mynp.ndarray([i for i in range(10)])
+b=mynp.gen_appoint(10)
+c=mynp.gen_range(0,9,1,shape=(1,3,3))
+c.shape, c.ndim, c.dtype,c
+b.dtype=np.dtype("i2")
+b.astype("int64")
+b
+c
+c.astype("S10")
+c
+a=mynp.ndarray(["adf","34b","fdfc","DDF","EEF","GEF"])
+a.astype("U1")
+
+
+
 
 
 
