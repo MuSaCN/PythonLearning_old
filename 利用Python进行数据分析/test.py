@@ -9,10 +9,16 @@ __mypath__=MyPackage.MyClass_Path.MyClass_Path("\\利用Python进行数据分析
 myplt=MyPackage.MyClass_Plot.MyClass_Figure()
 mynp=MyPackage.MyClass_Array.MyClass_NumPy()
 #------------------------------------------
-a=mynp.ndarray([i for i in range(10)])
-b=mynp.gen_appoint((5,5))
-b
-b[0]=[1,2,3,4,5]
+a=mynp.gen_range(0,20,1,shape=(2,10))
+b=mynp.gen_range(0,mynp.pi,6,"linspace")
+aa=mynp.ndarray([mynp.e,1])
+c=mynp.log(aa,False)
+c
+
+
+
+
+
 
 
 
