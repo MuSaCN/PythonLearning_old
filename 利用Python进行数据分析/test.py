@@ -14,15 +14,11 @@ b=mynp.gen_range(-5,5,0.01)
 a,b
 x,y= mynp.meshgrid(a,b)
 print(x,y)
-
 a=mynp.gen_random(shape=(5,3))
 a.sum(axis=1)
-
+a.all(0)
 mynp.where(a>0.5)
 np.where(a>0.5)
-
-# 基础数组统计方法：
-# ndarray.sum(axis) /.mean(axis) /.std(axis) /.var(axis) /.min(axis) /.max(axis) --> 基础统计
-# ndarray.argmin(axis) /.argmax(axis) --> 最小值/最大值 的位置
-# ndarray.cumsum() /.cumprod()  --> 从0开始元素累积和 / 从1开始元素累积积
-
+a=np.random.randn(10)
+len(a)
+a.sort()
