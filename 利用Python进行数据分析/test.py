@@ -9,31 +9,37 @@ __mypath__=MyPackage.MyClass_Path.MyClass_Path("\\利用Python进行数据分析
 myplt=MyPackage.MyClass_Plot.MyClass_Figure()
 mynp=MyPackage.MyClass_Array.MyClass_NumPy()
 #------------------------------------------
+#---对外接口：k值，axesindex，N*2结构[[x1,y1],[x2,y2]...]的数据
+k=3
+axesindex=0
+#---接受N*2的数据结构[[x1,y1],[x2,y2]...]
 x=mynp.gen_random(shape=(10,2))
-x
 myplt.PlotScatter(0,x[:,0],x[:,1])
-diff=x[:,np.newaxis,:]-x[np.newaxis,:,:]
-diff=x[:,np.newaxis,:]-x
-diff.shape
-sq=(diff**2).sum(-1)
-sq.diagonal()
 
-nearest=np.argsort(sq,axis=1)
-nearest=np.array([[5,4,3,2,1],[7,4,1,8,5]])
-np.partition(nearest,2,axis=1)
-nearest[a[0],a[1]]
-'''
-array([[0, 8, 3, 2, 1, 7, 6, 9, 5, 4],
-       [1, 6, 2, 0, 8, 9, 3, 4, 5, 7],
-       [2, 8, 0, 9, 3, 1, 5, 6, 7, 4],
-       [3, 8, 0, 2, 7, 1, 9, 5, 6, 4],
-       [4, 6, 1, 9, 2, 0, 8, 5, 3, 7],
-       [5, 9, 2, 8, 3, 1, 0, 6, 7, 4],
-       [6, 1, 4, 0, 2, 8, 9, 3, 5, 7],
-       [7, 3, 0, 8, 2, 1, 9, 6, 5, 4],
-       [8, 2, 3, 0, 1, 9, 7, 5, 6, 4],
-       [9, 5, 2, 1, 8, 3, 0, 6, 4, 7]], dtype=int64)
-'''
+#---批量生成距离差，每个点都匹配
+diff=x[:,np.newaxis,:]-x #注意减号前后不同，结果意义不同
+#---SquareDistance为平方距离
+SquareDistance=(diff**2).sum(axis=2)
+#---获得距离，数据意义：[[p0-p0,p0-p1...],[p1-p0,p1-p1...],...]
+Distance=SquareDistance**0.5
+
+#---获得排序序号
+nearest=np.argsort(Distance,axis=1)
+
+#---获得k个最邻近的序号(k个最小值分割到前面)
+nearest_partition=np.argpartition(Distance,k+1,axis=1)
+#---清理指定的axes
+myplt.ClearAxes(axesindex)
+#---画图
+for i in range(x.shape[0]):
+    for j in nearest_partition[i,:k+1]:
+        #画从x[i]到x[j]的线段(x[i]为点坐标)
+        myplt.PlotLine2Dot(axesindex,x[i],x[j],"",cla=False,show=False)
+myplt.FigureShow()
+
+
+
+
 
 
 
