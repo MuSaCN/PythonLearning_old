@@ -14,5 +14,12 @@ mypd=MyPackage.MyClass_Array.MyClass_Pandas()
 
 a=mypd.Index([1,2,3,4,5,"a","b","c"])
 a
-mypd.ChangeIndex(a,"delete","b")
+b=mypd.Index([3,4,5,6,7,"b","c","d"])
+b
+
+mypd.Index_sets(a,b,"diff")
+
+
+
+
 
