@@ -11,13 +11,26 @@ mypltpro=MyPackage.MyClass_PlotPro.MyClass_PlotPro()
 mynp=MyPackage.MyClass_Array.MyClass_NumPy()
 mypd=MyPackage.MyClass_Array.MyClass_Pandas()
 #------------------------------------------
+d=mypd.Series([1,5,9,7],index=["a","b","c","d"])
+mypd.reindex(d,index=[0,1,2,3,4,5],columns=None)
+mypd.reindex(d,index=[0,1,2,3,4,5],columns=None,fillnan="adsf")
 
-a=mypd.Index([1,2,3,4,5,"a","b","c"])
+a=mypd.DataFrame(np.arange(16).reshape(4,4),index=["a","b","c","d"],columns=["A","B","C","D"])
+mypd.reindex(a,index=[0,1,2,3,4,5],columns=[0,1,2,3,4,5,6])
+mypd.reindex(a,index=[0,1,2,3,4,5],columns=[0,1,2,3,4,5,6],fillnan=3.14)
+b=a+1
+mypd.reindex(b,index=["a","b","c","d","e"],fillnan=3.14)
 a
-b=mypd.Index([3,4,5,6,7,"b","c","d"])
-b
+d
+a.add(d,axis=None)
 
-mypd.Index_sets(a,b,"diff")
+
+
+
+
+
+
+
 
 
 
