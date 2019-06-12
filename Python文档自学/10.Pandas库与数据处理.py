@@ -58,7 +58,7 @@ df1*df2
 #DataFrame的轴axis与numpy一样。0轴-Y轴-列数据、1轴-X轴-行数据。
 
 #Python代码的设计原则之一是“显示优于隐式”，使用loc和iloc可以让代码更容易维护，可读性更高。
-
+#DataFrame的一级访问为列，这与NumPy的二维数据的一级访问不同，后者为行.
 
 
 

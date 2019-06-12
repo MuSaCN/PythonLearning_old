@@ -15,19 +15,6 @@ a=mypd.DataFrame(mynp.gen_random(0,10,shape=[4,4]),index=["a","a","c","d"],colum
 b=mypd.Series([i for i in range(5)])
 a
 b
-list(a.items())
-list(b.items())
-
-
-
-
-
-
-
-
-
-
-
-
-
+a.corr()
+b.corr(b)
 
