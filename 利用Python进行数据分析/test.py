@@ -12,9 +12,13 @@ mynp=MyPackage.MyClass_Array.MyClass_NumPy()
 mypd=MyPackage.MyClass_Array.MyClass_Pandas()
 #------------------------------------------
 a=mypd.DataFrame(mynp.gen_random(0,10,shape=[4,4]),index=["a","a","c","d"],columns=["A","B","C","D"])
-b=mypd.Series([i for i in range(5)])
+b=mypd.Series([1,2,4,np.NaN],index=["a","b","c","d"])
 a
 b
-a.corr()
-b.corr(b)
+mypd.unique(a)
+mypd.unique(b)
+mypd.value_counts(a)
+mypd.value_counts(b)
+
+
 
