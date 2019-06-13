@@ -10,15 +10,19 @@ myplt=MyPackage.MyClass_Plot.MyClass_Figure()
 mypltpro=MyPackage.MyClass_PlotPro.MyClass_PlotPro()
 mynp=MyPackage.MyClass_Array.MyClass_NumPy()
 mypd=MyPackage.MyClass_Array.MyClass_Pandas()
+myfile=MyPackage.MyClass_File.MyClass_File()
 #------------------------------------------
-a=mypd.DataFrame(mynp.gen_random(0,10,shape=[4,4]),index=["a","a","c","d"],columns=["A","B","C","D"])
-b=mypd.Series([1,2,4,np.NaN],index=["a","b","c","d"])
-a
-b
-mypd.unique(a)
-mypd.unique(b)
-mypd.value_counts(a)
-mypd.value_counts(b)
+path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\ch06"
+pd.options.display.max_rows=10
+pd.options.display.max_columns=10
+it=pd.read_csv(path+"\\ex6.csv",chunksize=1000)
+for i in it:
+    print(i)
+    break
+
+
+it=myfile.readfile_iter(path+"\\ex6.csv",chunksize=10)
+next(it)
 
 
 
