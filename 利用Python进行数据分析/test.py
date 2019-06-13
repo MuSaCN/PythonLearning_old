@@ -21,7 +21,7 @@ for i in it:
     break
 
 
-it=myfile.readfile_iter(path+"\\ex6.csv",chunksize=10)
+it=myfile.readfile_iter(path+"\\ex6.csv",chunksize=100)
 next(it)
 
 
