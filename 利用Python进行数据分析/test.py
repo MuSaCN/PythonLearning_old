@@ -14,17 +14,7 @@ myfile=MyPackage.MyClass_File.MyClass_File()
 #------------------------------------------
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\ch06"
 
-a=myfile.read_lib(path+"\\ex7.csv",sep=",",isheader=False,toDataFrame=True,quotechar='"')
-a
-
-content=[]
-content.append(["asdf,fdsa,fdas",123,"asdf,fdsa,fdas"])
-content.append(["“我爱'你'中国”",432,"“你爱'我'中国吗"])
-myfile.write_lib(content,"out.csv","w",";",'.')
-myfile.read_lib("out.csv",";",False,False,".")
-
-
-
-
-
-
+import requests
+url = 'https://api.github.com/repos/pydata/pandas/milestones/28/labels'
+resp = requests.get(url)
+resp
