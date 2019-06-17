@@ -25,8 +25,8 @@ print(ts["2016-01":"2016-03"])                          #切片字符串时间�
 dates=[datetime(2016,1,i) for i in range(1,10)]
 df=pd.DataFrame(np.random.randn(9,4),index=dates,columns=list("ABCD"))
 print(df[0:3])                      #对行切片
-print(df["A"])                      #提取单独一列
-print(df[["A","C"]])                #提取多列
+print(df["A"])                      #提取单独一列,Series.
+print(df[["A","C"]])                #提取多列，DataFrame. df[["A"]]也是dataFrame
 print(df[df["A"]>0])                #根据boolean值提取行
 #PS注意：对列直接切片出错：df["A":"C"]；直接同时的操作行列也出错：df[1:3,"A"]
 #如果要行列操作，需要用方法：标签索引和切片loc[]
