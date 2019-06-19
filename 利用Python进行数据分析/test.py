@@ -16,7 +16,7 @@ path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析
 
 ## Hierarchical Indexing
 #%%
-data=mypd.Series(np.random.randn(9),index=[['a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd'],[1, 2, 3, 1, 3, 1, 2, 2, 3]])
+data=mypd.DataFrame(np.random.randn(9),index=[['a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd'],[1, 2, 3, 1, 3, 1, 2, 2, 3]])
 data
 #%%
 data.index
@@ -27,7 +27,8 @@ data.loc[['b', 'd']]
 #%%
 data.loc[:, 2]
 #%%
-data.unstack()
+data.unstack(0,0)
+data.stack()
 #%%
 data.unstack().stack()
 #%%
