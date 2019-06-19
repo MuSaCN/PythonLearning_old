@@ -60,7 +60,9 @@ df1*df2
 #Python代码的设计原则之一是“显示优于隐式”，使用loc和iloc可以让代码更容易维护，可读性更高。
 #DataFrame的一级访问为列，这与NumPy的二维数据的一级访问不同，后者为行.
 
-
+#stack堆积/unstack反堆积
+#stack表示DataFrame-->Series方向。所以Series无stack()函数，*.stack().stack()...不能无限
+#unstack表示Series-->DataFrame方向。当DataFrame的行索引都变成列索引时，系统会自动把列索引转成行索引，索引*.unstack().unstack()...能无限。
 
 
 
