@@ -13,8 +13,8 @@ mypd=MyPackage.MyClass_Array.MyClass_Pandas()
 myfile=MyPackage.MyClass_File.MyClass_File()
 #------------------------------------------
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
-
-
+a=myfile.read_pd(path+"examples\\macrodata.csv")
+a
 
 
 
