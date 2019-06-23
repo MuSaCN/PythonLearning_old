@@ -23,35 +23,10 @@ party_counts = party_counts.loc[:, 2:5]
 party_pcts = party_counts.div(party_counts.sum(1), axis=0)
 tips['tip_pct'] = tips['tip'] / (tips['total_bill'] - tips['tip'])
 
-#%%
-sns.barplot(x='day', y='tip_pct', hue='time', data=tips)
-myfig.ReSetFigureAxes()
-myfig.PlotBar_distribution(0,tips,x='day', y='tip_pct',hue='time',ci="sd")
+tips["tip_pct"].dtype in [np.dtype("float")]
+tips["size"].dtype==np.dtype("int")
 
 
-
-plt.show()
-#%%
-plt.close('all')
-#%%
-sns.set(style="whitegrid")
-#%% md
-### Histograms and Density Plots
-#%%
-plt.figure()
-#%%
-tips['tip_pct'].plot.hist(bins=50)
-#%%
-plt.figure()
-#%%
-tips['tip_pct'].plot.density()
-#%%
-plt.figure()
-#%%
-comp1 = np.random.normal(0, 1, size=200)
-comp2 = np.random.normal(10, 2, size=200)
-values = pd.Series(np.concatenate([comp1, comp2]))
-sns.distplot(values, bins=100, color='k')
 #%% md
 ### Scatter or Point Plots
 #%%
