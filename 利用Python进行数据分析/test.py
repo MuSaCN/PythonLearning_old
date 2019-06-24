@@ -16,6 +16,7 @@ mypd=MyPackage.MyClass_Array.MyClass_Pandas()           #矩阵数组类(整合P
 #---------------------------------------------------------
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
 
+myfigpro.ReSetFigureAxes(1,1)
 
 tips = pd.read_csv(path+'examples\\tips.csv')
 party_counts = pd.crosstab(tips['day'], tips['size'])
@@ -23,24 +24,31 @@ party_counts = party_counts.loc[:, 2:5]
 party_pcts = party_counts.div(party_counts.sum(1), axis=0)
 tips['tip_pct'] = tips['tip'] / (tips['total_bill'] - tips['tip'])
 
-tips["tip_pct"].dtype in [np.dtype("float")]
-tips["size"].dtype==np.dtype("int")
+myfigpro.ScatterMatrix(tips,reg=True,density=True,show=False)
+myfigpro.PlotSave("ScatterMatrix.jpg")
 
 
-#%% md
-### Scatter or Point Plots
-#%%
-macro = pd.read_csv('examples/macrodata.csv')
+sns.pairplot(tips,hue="time",diag_kind="kde")
+sns.pairplot(tips,hue="time",diag_kind="kde",kind="reg")
+sns.pairplot(tips, kind="reg",ax=myfig.AxesList[0])
+plt.show()
+
+
+macro = pd.read_csv(path+'examples\\macrodata.csv')
 data = macro[['cpi', 'm1', 'tbilrate', 'unemp']]
 trans_data = np.log(data).diff().dropna()
 trans_data[-5:]
-#%%
-plt.figure()
-#%%
-sns.regplot('m1', 'unemp', data=trans_data)
-plt.title('Changes in log %s versus log %s' % ('m1', 'unemp'))
+
+myfigpro.ScatterAndRegression(trans_data['m1'],trans_data['unemp'])
+
+
 #%%
 sns.pairplot(trans_data, diag_kind='kde', plot_kws={'alpha': 0.2})
+sns.pairplot(trans_data,hue="cpi")
+plt.show()
+
+
+
 #%% md
 ### Facet Grids and Categorical Data
 #%%
