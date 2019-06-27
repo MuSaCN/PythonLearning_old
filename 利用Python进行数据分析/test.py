@@ -17,7 +17,8 @@ mypdpro=MyPackage.MyClass_ArrayPro.MyClass_PandasPro()  #高级矩阵数组类
 #---------------------------------------------------------
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
 
-
+tips = pd.read_csv(path+'examples\\tips.csv')
+tips['tip_pct'] = tips['tip'] / tips['total_bill']
 
 ## Pivot Tables and Cross-Tabulation
 #%%
