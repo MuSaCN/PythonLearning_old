@@ -19,9 +19,6 @@ path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析
 tips = pd.read_csv(path+'examples\\tips.csv')
 tips['tip_pct'] = tips['tip'] / tips['total_bill']
 
-frame = pd.DataFrame({'data1': np.random.randn(20),'data2': np.random.randn(20)})
-mypd.filterAbnormal(frame,lower=0,upper=1,AnyOrAll="any",limited=False)
-mypd.get_dummies(frame["data1"])
 
 ### Quantile and Bucket Analysis
 #%%
