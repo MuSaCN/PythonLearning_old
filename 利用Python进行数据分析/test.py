@@ -23,18 +23,22 @@ tips['tip_pct'] = tips['tip'] / tips['total_bill']
 ## Pivot Tables and Cross-Tabulation
 #%%
 tips.pivot_table(index=['day', 'smoker'])
+
 #%%
-tips.pivot_table(['tip_pct', 'size'], index=['time', 'day'],
-                 columns='smoker')
+tips.pivot_table(['tip_pct', 'size'], index=['time', 'day'],columns='smoker')
+
+pd.crosstab(values=[tips['tip_pct'],tips['size']], index=[tips['time'], tips['day']], columns=tips['smoker'],margins=True,aggfunc="mean")
+
 #%%
-tips.pivot_table(['tip_pct', 'size'], index=['time', 'day'],
-                 columns='smoker', margins=True)
+tips.pivot_table(['tip_pct', 'size'], index=['time', 'day'],columns='smoker', margins=True,aggfunc="count")
 #%%
 tips.pivot_table('tip_pct', index=['time', 'smoker'], columns='day',
                  aggfunc=len, margins=True)
 #%%
 tips.pivot_table('tip_pct', index=['time', 'size', 'smoker'],
                  columns='day', aggfunc='mean', fill_value=0)
+pd.pivot_table()
+
 #%% md
 ### Cross-Tabulations: Crosstab
 #%%
@@ -56,6 +60,10 @@ data = pd.read_table(StringIO(data), sep='\s+')
 data
 #%%
 pd.crosstab(data.Nationality, data.Handedness, margins=True)
+
+
+
+
 #%%
 pd.crosstab([tips.time, tips.day], tips.smoker, margins=True)
 #%%
