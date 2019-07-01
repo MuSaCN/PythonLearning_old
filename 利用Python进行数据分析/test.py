@@ -17,69 +17,6 @@ mypdpro=MyPackage.MyClass_ArrayPro.MyClass_PandasPro()  #高级矩阵数组类
 #---------------------------------------------------------
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
 
-tips = pd.read_csv(path+'examples\\tips.csv')
-tips['tip_pct'] = tips['tip'] / tips['total_bill']
-
-## Pivot Tables and Cross-Tabulation
-#%%
-tips.pivot_table(index=['day', 'smoker'])
-
-#%%
-tips.pivot_table(['tip_pct', 'size'], index=['time', 'day'],columns='smoker')
-
-pd.crosstab(values=[tips['tip_pct'],tips['size']], index=[tips['time'], tips['day']], columns=tips['smoker'],margins=True,aggfunc="mean")
-
-#%%
-tips.pivot_table(['tip_pct', 'size'], index=['time', 'day'],columns='smoker', margins=True,aggfunc="count")
-#%%
-tips.pivot_table('tip_pct', index=['time', 'smoker'], columns='day',
-                 aggfunc=len, margins=True)
-#%%
-tips.pivot_table('tip_pct', index=['time', 'size', 'smoker'],
-                 columns='day', aggfunc='mean', fill_value=0)
-pd.pivot_table()
-
-#%% md
-### Cross-Tabulations: Crosstab
-#%%
-from io import StringIO
-data = """\
-Sample  Nationality  Handedness
-1   USA  Right-handed
-2   Japan    Left-handed
-3   USA  Right-handed
-4   Japan    Right-handed
-5   Japan    Left-handed
-6   Japan    Right-handed
-7   USA  Right-handed
-8   USA  Left-handed
-9   Japan    Right-handed
-10  USA  Right-handed"""
-data = pd.read_table(StringIO(data), sep='\s+')
-#%%
-data
-#%%
-pd.crosstab(data.Nationality, data.Handedness, margins=True)
-
-
-
-
-#%%
-pd.crosstab([tips.time, tips.day], tips.smoker, margins=True)
-#%%
-pd.options.display.max_rows = PREVIOUS_MAX_ROWS
-#%% md
-## Conclusion
-
-
-
-
-
-
-
-
-
-
 
 
 
