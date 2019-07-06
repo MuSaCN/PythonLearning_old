@@ -177,9 +177,12 @@ ts.resample('M').mean()
 ## Time Zone Handling
 #%%
 import pytz
-pytz.common_timezones[-5:]
+pytz.common_timezones[-10:]
 #%%
+mypd.country_timezones("CN")
+
 tz = pytz.timezone('America/New_York')
+pytz.timezone('Asia/Shanghai')
 tz
 #%% md
 ### Time Zone Localization and Conversion
@@ -190,23 +193,34 @@ ts
 #%%
 print(ts.index.tz)
 #%%
-pd.date_range('3/9/2012 9:30', periods=10, freq='D', tz='UTC')
+pd.date_range('3/9/2012 9:30', periods=10, freq='D', tz='America/New_York')
 #%%
 ts
-ts_utc = ts.tz_localize('UTC')
+a=mypd.tz_convert(ts,'Asia/Shanghai')
+a
+mypd.tz_convert(a,'America/New_York')
+
+ts_utc = ts.tz_localize('Asia/Shanghai')
 ts_utc
 ts_utc.index
+ts_utc.index.tz is None
+ts.index.tz is None
 #%%
 ts_utc.tz_convert('America/New_York')
 #%%
 ts_eastern = ts.tz_localize('America/New_York')
-ts_eastern.tz_convert('UTC')
+ts_eastern.tz_convert('UTC').tz_convert('Europe/Berlin')
 ts_eastern.tz_convert('Europe/Berlin')
 #%%
 ts.index.tz_localize('Asia/Shanghai')
+pytz.country_timezones("NZ")
+
 #%% md
 ### Operations with Time Zone−Aware Timestamp Objects
 #%%
+mytime.Timestamp("2011-03-12 04:00",tz='Europe/Moscow')
+mypd.Timestamp("2011-03-12 04:00",tz='Europe/Moscow')
+mypd.country_timezones()
 stamp = pd.Timestamp('2011-03-12 04:00')
 stamp_utc = stamp.tz_localize('utc')
 stamp_utc.tz_convert('America/New_York')
@@ -214,8 +228,8 @@ stamp_utc.tz_convert('America/New_York')
 stamp_moscow = pd.Timestamp('2011-03-12 04:00', tz='Europe/Moscow')
 stamp_moscow
 #%%
-stamp_utc.value
-stamp_utc.tz_convert('America/New_York').value
+stamp_moscow.value
+stamp_moscow.tz_convert('America/New_York').value
 #%%
 from pandas.tseries.offsets import Hour
 stamp = pd.Timestamp('2012-03-12 01:30', tz='US/Eastern')
@@ -238,8 +252,9 @@ result.index
 #%% md
 ## Periods and Period Arithmetic
 #%%
-p = pd.Period(2007, freq='A-DEC')
+p = pd.Period("2007-01",freq=None)
 p
+pd.date_range("2010-01-01","2020-12-31",freq="A")
 #%%
 p + 5
 p - 2
@@ -247,12 +262,17 @@ p - 2
 pd.Period('2014', freq='A-DEC') - p
 #%%
 rng = pd.period_range('2000-01-01', '2000-06-30', freq='M')
+mypd.period_range('2000-01-01', '2000-06-30', freq='M')
+
 rng
 #%%
-pd.Series(np.random.randn(6), index=rng)
+pd.Series(np.random.randn(3), index=index)
 #%%
-values = ['2001Q3', '2002Q2', '2003Q1']
-index = pd.PeriodIndex(values, freq='Q-DEC')
+values = ['2001-3', '2002-2', '2003-1']
+type(values)
+mypd.Period(values,freq="Q")
+
+index = pd.PeriodIndex(values,freq="Q")
 index
 #%% md
 ### Period Frequency Conversion
