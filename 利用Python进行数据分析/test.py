@@ -18,67 +18,6 @@ mytime=MyPackage.MyClass_Time.MyClass_Time()            #时间类
 #---------------------------------------------------------
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
 
-
-#%% md
-## Resampling and Frequency Conversion
-#%%
-rng = pd.date_range('2000-01-01', periods=100, freq='D')
-ts = pd.Series(np.random.randn(len(rng)), index=rng)
-ts
-ts.resample('M').mean()
-ts.resample('M', kind='period').mean()
-#%% md
-### Downsampling
-#%%
-rng = pd.date_range('2000-01-01', periods=12, freq='T')
-ts = pd.Series(np.arange(12), index=rng)
-ts
-#%%
-ts.resample('5min', closed='right').sum()
-#%%
-ts.resample('5min', closed='right').sum()
-#%%
-ts.resample('5min', closed='right', label='right').sum()
-#%%
-ts.resample('5min', closed='right',
-            label='right', loffset='-1s').sum()
-#%% md
-#### Open-High-Low-Close (OHLC) resampling
-#%%
-ts.resample('5min').ohlc()
-#%% md
-### Upsampling and Interpolation
-#%%
-frame = pd.DataFrame(np.random.randn(2, 4),
-                     index=pd.date_range('1/1/2000', periods=2,
-                                         freq='W-WED'),
-                     columns=['Colorado', 'Texas', 'New York', 'Ohio'])
-frame
-#%%
-df_daily = frame.resample('D').asfreq()
-df_daily
-#%%
-frame.resample('D').ffill()
-#%%
-frame.resample('D').ffill(limit=2)
-#%%
-frame.resample('W-THU').ffill()
-#%% md
-### Resampling with Periods
-#%%
-frame = pd.DataFrame(np.random.randn(24, 4),
-                     index=pd.period_range('1-2000', '12-2001',
-                                           freq='M'),
-                     columns=['Colorado', 'Texas', 'New York', 'Ohio'])
-frame[:5]
-annual_frame = frame.resample('A-DEC').mean()
-annual_frame
-#%%
-# Q-DEC: Quarterly, year ending in December
-annual_frame.resample('Q-DEC').ffill()
-annual_frame.resample('Q-DEC', convention='end').ffill()
-#%%
-annual_frame.resample('Q-MAR').ffill()
 #%% md
 ## Moving Window Functions
 #%%
