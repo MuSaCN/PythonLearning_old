@@ -195,5 +195,3 @@ model = LogisticRegression(C=10)
 scores = cross_val_score(model, X_train, y_train, cv=4)
 scores
 
-
-
