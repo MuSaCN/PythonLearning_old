@@ -25,6 +25,20 @@ names=pd.Series(data)
 names.str.cat()
 
 
+import pandas as pd
+date = pd.to_datetime("5th of July, 2015")
+date
+#%%
+date.strftime('%A')
+date + pd.to_timedelta(np.arange(12), 'D')
+
+date.to_period(freq=None)
+
+
+
+
+
+
 
 
 
