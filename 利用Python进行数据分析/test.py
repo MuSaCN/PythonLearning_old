@@ -20,23 +20,15 @@ path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析
 path1="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\Python数据科学手册\\notebooks\\"
 
 
-mean = [0, 0]
-cov = [[1, 1], [1, 2]]
-x, y = np.random.multivariate_normal(mean, cov, 10000).T
-plt.hist2d(x, y, bins=30, cmap='Blues')
-cb = plt.colorbar()
-cb.set_label('counts in bin')
+
+
 
 
 
 myfig.ReSetFigureAxes()
-
-myfig.PlotHistogram2D(x,y,bins=30,density=False)
-
-h, xedges, yedges, pc=myfig.AxesList[0].hist2d(x, y, bins=30)
-myfig.fig.colorbar(mappable=pc,ax=myfig.AxesList[0])
+# myfig.AxesList[0].
+# myfig.fig.
 myfig.FigureShow()
-
 plt.show()
 
 
