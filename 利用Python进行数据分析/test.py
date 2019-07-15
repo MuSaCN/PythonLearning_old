@@ -20,12 +20,13 @@ path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析
 path1="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\Python数据科学手册\\notebooks\\"
 
 
+myfig.ReSetFigureAxes(4,4,sharex=True,sharey=True,GridSpec=["[:-1, 1:]","[:-1, 0]","[-1, 1:]"])
+
+myfig.AxesList
 
 
 
-
-
-myfig.ReSetFigureAxes()
+myfig.ReSetFigureAxes(2,2)
 # myfig.AxesList[0].
 # myfig.fig.
 myfig.FigureShow()
