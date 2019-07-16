@@ -19,14 +19,18 @@ mytime=MyPackage.MyClass_Time.MyClass_Time()            #时间类
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
 path1="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\Python数据科学手册\\notebooks\\"
 
+myfig.ReSetFigureAxes(1,2)
+a=np.random.rand(50)
+myfig.PlotLine(a,axesindex=0,show=False)
+myfig.PlotLine(a,axesindex=1,yscale="log")
 
-myfig.ReSetFigureAxes(4,4,sharex=True,sharey=True,GridSpec=["[:-1, 1:]","[:-1, 0]","[-1, 1:]"])
-
-myfig.AxesList
 
 
 
-myfig.ReSetFigureAxes(2,2)
+
+
+
+myfig.ReSetFigureAxes()
 # myfig.AxesList[0].
 # myfig.fig.
 myfig.FigureShow()
