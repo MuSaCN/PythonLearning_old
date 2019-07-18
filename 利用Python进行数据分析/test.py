@@ -46,5 +46,12 @@ myfigpro.FacetGrid_hist(tips,"sex","time","tip_pct",bins=15)
 grid = sns.FacetGrid(tips, row="sex", col="time", margin_titles=True)
 grid.map(plt.hist, "tip_pct", bins=15);
 plt.show()
-
+planets = sns.load_dataset('planets')
+planets.head()
+#%%
+with sns.axes_style('white'):
+    g = sns.factorplot("year", data=planets, aspect=2,
+                       kind="count", color='steelblue')
+    g.set_xticklabels(step=5)
+#%%
 
