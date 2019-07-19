@@ -17,27 +17,13 @@ mypdpro=MyPackage.MyClass_ArrayPro.MyClass_PandasPro()  #高级矩阵数组类
 mytime=MyPackage.MyClass_Time.MyClass_Time()            #时间类
 #---------------------------------------------------------
 path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
-path1="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\Python数据科学手册\\notebooks\\"
+path1="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\Python数据科学手册\\notebooks\\data\\"
 
 myfig.ReSetFigureAxes()
 # myfig.AxesList[0].
 # myfig.fig.
 myfig.FigureShow()
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
