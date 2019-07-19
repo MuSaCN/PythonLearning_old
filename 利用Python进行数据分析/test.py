@@ -25,33 +25,23 @@ myfig.ReSetFigureAxes()
 myfig.FigureShow()
 plt.show()
 
-rng = np.random.RandomState(0)
-x = np.linspace(0, 10, 500)
-y = np.cumsum(rng.randn(500, 6), 0)
-plt.plot(x, y)
-plt.legend('ABCDEF', ncol=2, loc='upper left');
-
-import seaborn as sns
-
-
-tips = sns.load_dataset('tips')
-tips.head()
-tips['tip_pct'] = 100 * tips['tip'] / tips['total_bill']
-
-
-myfigpro.FacetGrid_hist(tips,"sex","time","tip_pct",bins=15)
 
 
 
-grid = sns.FacetGrid(tips, row="sex", col="time", margin_titles=True)
-grid.map(plt.hist, "tip_pct", bins=15);
-plt.show()
-planets = sns.load_dataset('planets')
-planets.head()
-#%%
-with sns.axes_style('white'):
-    g = sns.factorplot("year", data=planets, aspect=2,
-                       kind="count", color='steelblue')
-    g.set_xticklabels(step=5)
-#%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
