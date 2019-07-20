@@ -25,9 +25,13 @@ myfig.ReSetFigureAxes()
 myfig.FigureShow()
 plt.show()
 
+np.uint16 == np.integer
+np.int16.mro()
+np.issubdtype( np.int16,np.integer )
 
-
-
-
+a=np.arange(8)
+b=a.reshape((4,-1),order="c")
+b
+b.flatten()[2]=99
 
 
