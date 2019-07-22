@@ -16,7 +16,7 @@ mypd=MyPackage.MyClass_Array.MyClass_Pandas()           #矩阵数组类(整合P
 mypdpro=MyPackage.MyClass_ArrayPro.MyClass_PandasPro()  #高级矩阵数组类
 mytime=MyPackage.MyClass_Time.MyClass_Time()            #时间类
 #---------------------------------------------------------
-path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\"
+path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\利用Python进行数据分析(第二版)代码\\examples\\"
 path1="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\Python数据科学手册\\notebooks\\data\\"
 
 myfig.ReSetFigureAxes()
@@ -25,7 +25,17 @@ myfig.ReSetFigureAxes()
 myfig.FigureShow()
 plt.show()
 
+a=myfile.read_lib(path+"ex8.csv",",",isheader=False,toDataFrame=False,quotechar='"',skipinitialspace=True)
+b=myfile.read_lib(path+"ex8.csv",",",isheader=True,toDataFrame=False,quotechar='"',skipinitialspace=True)
+c=myfile.read_lib(path+"ex8.csv",",",isheader=True,toDataFrame=True,quotechar='"',skipinitialspace=True)
 
+type(a)
+type(b)
+type(c)
+
+list(c)
+
+myfile.write_lib(a,"out_test.csv",mode="a",sep=".")
 
 
 
