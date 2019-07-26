@@ -23,7 +23,7 @@ myfig.ReSetFigureAxes()
 # myfig.AxesList[0].
 # myfig.fig.
 myfig.FigureShow()
-plt.show();
+plt.show()
 
 a=myfile.read_lib(path+"ex8.csv",",",isheader=False,toDataFrame=False,quotechar='"',skipinitialspace=True)
 b=myfile.read_lib(path+"ex8.csv",",",isheader=True,toDataFrame=False,quotechar='"',skipinitialspace=True)
