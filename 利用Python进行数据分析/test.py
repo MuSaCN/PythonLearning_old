@@ -25,18 +25,10 @@ myfig.ReSetFigureAxes()
 myfig.FigureShow()
 plt.show()
 
-a=myfile.read_lib(path+"ex8.csv",",",isheader=False,toDataFrame=False,quotechar='"',skipinitialspace=True)
-b=myfile.read_lib(path+"ex8.csv",",",isheader=True,toDataFrame=False,quotechar='"',skipinitialspace=True)
-c=myfile.read_lib(path+"ex8.csv",",",isheader=True,toDataFrame=True,quotechar='"',skipinitialspace=True)
-
-type(a)
-type(b)
-type(c)
-
-list(c)
-
-myfile.write_lib(a,"out_test.csv",mode="a",sep=".")
-
+np.partition(np.array([4,3,5,6,2,1,7,8,9,0]), 5, 0)
+a=np.array([1,2,3,4])
+a.prod()
+np.exp2(a)
 
 
 
