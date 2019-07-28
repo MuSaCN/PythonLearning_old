@@ -25,11 +25,8 @@ myfig.ReSetFigureAxes()
 myfig.FigureShow()
 plt.show()
 
-np.partition(np.array([4,3,5,6,2,1,7,8,9,0]), 5, 0)
-a=np.array([1,2,3,4])
-a.prod()
-np.exp2(a)
-
+df=pd.DataFrame(np.random.randn(4,4),index=[0,3,2,1])
+df
 
 
 
