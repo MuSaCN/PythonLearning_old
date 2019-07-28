@@ -25,11 +25,6 @@ myfig.ReSetFigureAxes()
 myfig.FigureShow()
 plt.show()
 
-df=pd.DataFrame(np.random.randn(4,5),index=["a","b","c","d"])
-df
-
-
-
 
 
 
