@@ -25,9 +25,10 @@ myfig.ReSetFigureAxes()
 myfig.FigureShow()
 plt.show()
 
-df=pd.DataFrame(np.random.randn(4,4),index=[0,3,2,1])
+df=pd.DataFrame(np.random.randn(4,4),index=["a","b","c","d"])
 df
-
+df.index
+df.rename(index=str.title)
 
 
 
