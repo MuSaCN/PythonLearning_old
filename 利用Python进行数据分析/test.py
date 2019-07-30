@@ -26,19 +26,21 @@ myfig.FigureShow()
 plt.show()
 
 
-np.diag([1,2,3,4])
-np.mat("1, 2 ,3;4 5 6")
-
-a=np.mat([[1,2,3],[4,5,6],[7,8,9]])
-type(a)
+a=pd.DataFrame(np.random.random((10,5)))
 a
+a.drop(labels=None,axis=0)
+
+b=np.random.random(10)
+b.ptp()
+a=pd.Series([3.43,3.45,	3.43,	3.48	,3.52	,3.50	,3.39,3.48,	3.41,	3.38	,3.49	,3.45,	3.51,	3.50])
+a
+np.var(a)*14/13
+a.var()
+np.std(a)
+a.std()/(14**0.5)
 
 
-
-
-
-
-
+a.sem()
 
 
 
