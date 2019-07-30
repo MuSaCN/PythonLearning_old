@@ -26,6 +26,4 @@ myfig.FigureShow()
 plt.show()
 
 
-mypd.country_timezones()
-
-
+np.diag([1,2,3,4])
