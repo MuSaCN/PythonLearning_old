@@ -39,6 +39,7 @@ a.var()
 np.std(a)
 a.std()/(14**0.5)
 
+pd.DatetimeIndex(a[0])
 
 a.sem()
 
