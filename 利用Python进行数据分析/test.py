@@ -27,7 +27,15 @@ plt.show()
 
 # --------
 
-
+start=1
+count=0
+while start>0:
+    if np.random.rand() <0.5:
+        start+=-1
+    elif np.random.rand() >= 0.5:
+        start+=1
+    count+=1
+    print(count,start)
 
 
 
