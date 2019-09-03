@@ -24,8 +24,8 @@ File=Path+"\\retdata.csv"
 
 input_data=myfile.read_pd(File)
 a=input_data.gsyh
-myDA.describe(input_data)
-
+a=myDA.describe(input_data.gsyh)
+type(a)
 
 
 
