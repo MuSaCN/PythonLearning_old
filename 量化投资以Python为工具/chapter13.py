@@ -18,10 +18,15 @@ mypdpro = MyPackage.MyClass_ArrayPro.MyClass_PandasPro()  #高级矩阵数组类
 mytime = MyPackage.MyClass_Time.MyClass_Time()  #时间类
 
 
+Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\part 2\\013"
+File=Path+"\\retdata.csv"
 
+returns=myfile.read_pd(File)
 
+returns.mean()
 
-
+plt.hist(returns.gsyh)
+plt.show()
 
 
 
