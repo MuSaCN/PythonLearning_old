@@ -19,19 +19,39 @@ mytime = MyPackage.MyClass_Time.MyClass_Time()  #时间类
 myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 #------------------------------------------------------------------------------------------
 
-Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\part 2\\013"
-File=Path+"\\retdata.csv"
+Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答\\Part2\\001"
+File2=Path2+"\\history.csv"
+data2=myfile.read_pd(File2,",",index=["Date"],parse_dates=True)
+data2.head()
+myDA.describe(data2,False)
+myDA.describe(data2['Emerging.Markets'],True)
 
-input_data=myfile.read_pd(File)
+#1.
+history = pd.read_csv(File2,index_col = 'Date')
+history.index = pd.to_datetime(history.index,format='%Y-%m-%d')
+history.head()
+history['Emerging.Markets'].mean()
+history['Emerging.Markets'].median()
+history['Emerging.Markets'].mode()
+history['Emerging.Markets'].quantile([0.1,0.9])
 
-myDA.describe(input_data)
+#2.
+myDA.describe(data2['Event.Driven'],True)
+history['Event.Driven'].max() - history['Event.Driven'].min()
+history['Event.Driven'].mad()
+history['Event.Driven'].var()
+history['Event.Driven'].std()
 
+#3.
+history[['Relative.Value','Fixed.Income.Arbitrage']].plot()
+plt.show()
+history['Relative.Value'].mean()
+history['Fixed.Income.Arbitrage'].mean()
+history['Relative.Value'].std()
+history['Fixed.Income.Arbitrage'].std()
 
-
-
-
-
-
+#4.
+history.describe()
 
 
 
