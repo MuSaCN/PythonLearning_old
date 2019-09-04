@@ -23,9 +23,8 @@ Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具
 File=Path+"\\retdata.csv"
 
 input_data=myfile.read_pd(File)
-a=input_data.gsyh
-a=myDA.describe(input_data.gsyh)
-type(a)
+
+myDA.describe(input_data)
 
 
 
