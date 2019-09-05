@@ -19,8 +19,8 @@ mytime = MyPackage.MyClass_Time.MyClass_Time()  #时间类
 myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 #------------------------------------------------------------
 
-
-
+mypd.Index([1,23,4,5,6])
+mypd.Categorical([1,2,3])
 
 
 
