@@ -26,12 +26,8 @@ Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具
 File=Path+"\\return300.csv"
 Return300=myfile.read_pd(File)
 
-myfig.PlotHistogram(Return300["return"],density=False,cla=True)
-myfigpro.ReSetFigureAxes()
-myfigpro.HistAndDensity(Return300["return"],bins=100)
 
-
-
+myfigpro.DensityAndCumsun(Return300["return"],-5,5,1000,"Return")
 
 
 
