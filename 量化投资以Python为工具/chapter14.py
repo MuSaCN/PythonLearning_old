@@ -20,6 +20,15 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 #------------------------------------------------------------
 
 
+pd.Series(np.random.choice([1,2,3],10000,True,p=[0.8,0.1,0.1])).value_counts()/10000
+
+Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\part 2\\014"
+File=Path+"\\return300.csv"
+Return300=myfile.read_pd(File)
+
+myfig.PlotHistogram(Return300["return"],density=False,cla=True)
+myfigpro.ReSetFigureAxes()
+myfigpro.HistAndDensity(Return300["return"],bins=100)
 
 
 
