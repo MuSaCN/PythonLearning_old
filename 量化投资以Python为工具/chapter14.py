@@ -57,6 +57,9 @@ myfig.fPlot(2,40,0,5,200,True,"2",show=False)
 myfig.fPlot(3,40,0,5,200,True,"3",show=False)
 myfig.fPlot(4,40,0,5,200,True,"4",show=True)
 
+#4
+
+
 
 
 

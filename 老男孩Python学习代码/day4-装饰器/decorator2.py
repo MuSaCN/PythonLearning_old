@@ -11,6 +11,7 @@ def test(func):
     print("the func run time is %s" %(stop_time-start_time))
 test(bar)
 
+
 def bar1():
     time.sleep(1)
     print("in the bar1")
