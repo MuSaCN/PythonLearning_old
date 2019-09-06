@@ -36,9 +36,33 @@ EMarket=history["Emerging.Markets"]
 1-myDA.ReturnBinomProb(EMarket,6,12,True)
 
 #3
-myfigpro.NormPlot(0,1,200,0,False)
-myfigpro.NormPlot(0,0.5**0.5,200,0,False)
-myfigpro.NormPlot(0,2**0.5,200,0,False)
-myfigpro.NormPlot(2,1,200,0,True)
+myfig.ReSetFigureAxes()
+myfig.NormPlot(0,1,200,True,show=False)
+myfig.NormPlot(0,0.5**0.5,200,True,show=False)
+myfig.NormPlot(0,2**0.5,200,True,show=False)
+myfig.NormPlot(2,1,200,True,show=True)
+
+myfig.ChiPlot(1,0,5,200,True,"1",show=False)
+myfig.ChiPlot(2,0,5,200,True,"2",show=False)
+myfig.ChiPlot(3,0,5,200,True,"3",show=False)
+myfig.ChiPlot(4,0,5,200,True,"4",show=True)
+
+myfig.tPlot(1,-5,5,200,False,"1",show=False)
+myfig.tPlot(2,-5,5,200,False,"2",show=False)
+myfig.tPlot(3,-5,5,200,False,"3",show=False)
+myfig.tPlot(4,-5,5,200,False,"4",show=True)
+
+myfig.fPlot(1,40,0,5,200,True,"1",show=False)
+myfig.fPlot(2,40,0,5,200,True,"2",show=False)
+myfig.fPlot(3,40,0,5,200,True,"3",show=False)
+myfig.fPlot(4,40,0,5,200,True,"4",show=True)
+
+
+
+
+
+
+
+
 
 
