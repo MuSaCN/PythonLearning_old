@@ -65,7 +65,3 @@ myfig.fPlot(4,40,0,5,200,True,"4",show=True)
 
 
 
-
-
-
-
