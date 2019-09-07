@@ -45,7 +45,18 @@ myfig.PlotHistogram(Retindex,density=True,show=False)
 myfig.NormPlot(mu,sigma)
 myfig.PlotLine(np.arange(-0.06,0.062,0.002),stats.norm.pdf(np.arange(-0.06,0.062,0.002),mu,sigma))
 
+TRD_Index=pd.read_table(Path+'\\part 2\\015\\TRD_Index.txt',sep='\t')
+SHindex=TRD_Index[TRD_Index.Indexcd==1]
+SHRet=SHindex.Retindex
+myDA.ttest_1samp(SHRet,0.0002)
+stats.ttest_1samp(SHRet,0.0002)
 
+SZindex=TRD_Index[TRD_Index.Indexcd==399106]
+SZRet=SZindex.Retindex
+myDA.ttest_2samp(SHRet,SZRet,False)
+
+stats.ttest_ind(SHRet,SZRet)
+stats.ttest_rel(SHRet,SZRet)
 
 
 
