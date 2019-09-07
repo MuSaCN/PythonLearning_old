@@ -23,41 +23,48 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码"
 Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
-SHindex=pd.read_csv(Path+'\\part 2\\015\\TRD_Index.csv')
-SHindex.head(3)
-Retindex=SHindex.Retindex
+#1
+au=np.array((6.683,6.678,6.767,6.692,6.672,6.678))
+pa=np.array((6.661,6.664,6.668,6.666,6.665))
+myDA.IntervalEstimation(au,0.90)
+myDA.IntervalEstimation(pa,0.90)
 
-
-
-Retindex.hist()
+#5.
+import math
+Bwages = pd.read_csv(Path2+'/Part2/002/Bwages.csv')
+stats.ttest_1samp(Bwages.wage,0)
+Bwages.wage.hist(normed=True)
 plt.show()
 
-mu=Retindex.mean()
-sigma=Retindex.std()
-import matplotlib.pyplot as plt
-plt.hist(Retindex,normed=True)
-plt.plot(np.arange(-0.06,0.062,0.002),stats.norm.pdf(np.arange(-0.06,0.062,0.002),mu,sigma))
-stats.t.interval(0.95,len(Retindex)-1,mu,stats.sem(Retindex))
+mu = Bwages.wage.mean()
+std = Bwages.wage.std()
+low = mu - stats.t.ppf(0.975,len(Bwages)-1) * std / math.sqrt(len(Bwages))
+high = mu + stats.t.ppf(0.975,len(Bwages)-1) * std / math.sqrt(len(Bwages))
+low
+high
 
+#6.
+Bwages.wage.hist(bins=100,normed=True)
+bins=np.linspace(0,50,200)
+plt.plot(bins,stats.norm.pdf(bins,mu,std))
+plt.show()
 
-myfig.ReSetFigureAxes()
-myfig.PlotHistogram(Retindex,density=True,show=False)
-myfig.NormPlot(mu,sigma)
-myfig.PlotLine(np.arange(-0.06,0.062,0.002),stats.norm.pdf(np.arange(-0.06,0.062,0.002),mu,sigma))
+#7
+MT=(0.225,0.262,0.217,0.24,0.23,0.229,0.235,0.217)
+Sn=(0.209,0.205,0.196,0.21,0.202,0.207,0.224,0.223)
+stats.ttest_ind(MT,Sn)
+myDA.ttest_2samp(MT,Sn,True)
 
-TRD_Index=pd.read_table(Path+'\\part 2\\015\\TRD_Index.txt',sep='\t')
-SHindex=TRD_Index[TRD_Index.Indexcd==1]
-SHRet=SHindex.Retindex
-myDA.ttest_1samp(SHRet,0.0002)
-stats.ttest_1samp(SHRet,0.0002)
+#9
+Bwages = pd.read_csv(Path2+'/Part2/002/Bwages.csv')
+Bwages["wage"].mean()
+myDA.ttest_1samp(Bwages["wage"],11)
 
-SZindex=TRD_Index[TRD_Index.Indexcd==399106]
-SZRet=SZindex.Retindex
-myDA.ttest_2samp(SHRet,SZRet,False)
+#10
+history = pd.read_csv(Path2+'/Part2/001/history.csv', index_col = 'Date')
+stats.ttest_ind(history['Emerging.Markets'], history['Global.Macro'])
 
-stats.ttest_ind(SHRet,SZRet)
-stats.ttest_rel(SHRet,SZRet)
-
-
+#11.
+stats.ttest_rel(history['Emerging.Markets'],history['Global.Macro'])
 
 
