@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import seaborn as sns
 import statsmodels as sm
+from scipy import stats
 import MyPackage
 
 __mypath__ = MyPackage.MyClass_Path.MyClass_Path("\\量化投资以Python为工具")  #路径类
@@ -22,10 +23,27 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码"
 Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
+SHindex=pd.read_csv(Path+'\\part 2\\015\\TRD_Index.csv')
+SHindex.head(3)
+Retindex=SHindex.Retindex
 
 
 
+Retindex.hist()
+plt.show()
 
+mu=Retindex.mean()
+sigma=Retindex.std()
+import matplotlib.pyplot as plt
+plt.hist(Retindex,normed=True)
+plt.plot(np.arange(-0.06,0.062,0.002),stats.norm.pdf(np.arange(-0.06,0.062,0.002),mu,sigma))
+stats.t.interval(0.95,len(Retindex)-1,mu,stats.sem(Retindex))
+
+
+myfig.ReSetFigureAxes()
+myfig.PlotHistogram(Retindex,density=True,show=False)
+myfig.NormPlot(mu,sigma)
+myfig.PlotLine(np.arange(-0.06,0.062,0.002),stats.norm.pdf(np.arange(-0.06,0.062,0.002),mu,sigma))
 
 
 
