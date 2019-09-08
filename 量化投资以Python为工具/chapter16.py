@@ -23,11 +23,13 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码"
 Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
-#1
-
-
-
-
+#5
+managers = myfile.read_pd(Path2+'/Part2/004/managers.csv',index="Date")
+Return=pd.concat([managers.HAM1,managers.HAM3,managers.HAM4],axis=1)
+myDA.describe(Return.dropna(),modeshow=False)
+Return=pd.melt(Return,value_vars=["HAM1","HAM3","HAM4"])
+Return.columns = ['Class',"Return"]
+myDA.anova_lm('Return ~ C(Class)',data=Return)
 
 
 
