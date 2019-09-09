@@ -25,6 +25,7 @@ Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工�
 
 #chap17 regression
 import pandas as pd
+Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码"
 TRD_Index=pd.read_table(Path+'/017/TRD_Index.txt',sep='\t')
 SHindex=TRD_Index[TRD_Index.Indexcd==1]
 SZindex=TRD_Index[TRD_Index.Indexcd==399106]
@@ -34,6 +35,12 @@ SZRet.index=SHRet.index
 
 import statsmodels.api as sm
 model=sm.OLS(SHRet,sm.add_constant(SZRet)).fit()
+
+import statsmodels.formula.api as smf
+news=pd.concat([SHRet,SZRet],axis=1)
+news.columns=["SH","SZ"]
+a=smf.ols(formula='SH ~ SZ', data=news).fit()
+
 print(model.summary())
 model.fittedvalues[:5]
 
@@ -41,15 +48,14 @@ import matplotlib.pyplot as plt
 plt.scatter(model.fittedvalues,model.resid)
 plt.xlabel('拟合值')
 plt.ylabel('残差')
+plt.show()
 
 import scipy.stats as stats
-sm.qqplot(model.resid_pearson,\
-              stats.norm,line='45')
-
-plt.scatter(model.fittedvalues,\
-             model.resid_pearson**0.5)
+sm.qqplot(model.resid_pearson,stats.norm,line='45')
+plt.scatter(model.fittedvalues,model.resid_pearson**0.5)
 plt.xlabel('拟合值')
 plt.ylabel('标准化残差的平方根')
+
 
 penn=pd.read_excel('017/Penn World Table.xlsx',2)
 penn.head(3)
