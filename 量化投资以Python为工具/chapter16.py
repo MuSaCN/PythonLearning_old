@@ -46,5 +46,3 @@ myDA.anova_lm('Return ~ C(Class)',data=Return)
 
 
 
-
-
