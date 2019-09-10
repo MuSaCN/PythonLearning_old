@@ -36,36 +36,77 @@ SZRet.index=SHRet.index
 import statsmodels.api as sm
 model=sm.OLS(SHRet,sm.add_constant(SZRet)).fit()
 
+myfigpro.ScatterAndRegression(SZRet,SHRet,None,0,True)
+
 import statsmodels.formula.api as smf
 news=pd.concat([SHRet,SZRet],axis=1)
 news.columns=["SH","SZ"]
-a=smf.ols(formula='SH ~ SZ', data=news).fit()
+a=myDA.ols("SH~SZ",data=news,summary=False)
+myDA.ols_FittedvaluesResidScatter(a)
+
+a.fittedvalues #拟合值
+a.resid        #残差
+a.summary()    #摘要
+
 
 print(model.summary())
-model.fittedvalues[:5]
+a.fittedvalues[:5]
+
 
 import matplotlib.pyplot as plt
-plt.scatter(model.fittedvalues,model.resid)
-plt.xlabel('拟合值')
-plt.ylabel('残差')
-plt.show()
+
+myfig.PlotScatter(model.fittedvalues,model.resid,size=1)
+myfigpro.ScatterAndRegression(model.fittedvalues,model.resid)
+
 
 import scipy.stats as stats
+myDA.ols_qqplot(model)
 sm.qqplot(model.resid_pearson,stats.norm,line='45')
+plt.show()
+
+pd.Series(model.resid).hist(bins=100)
+plt.show()
+
+
 plt.scatter(model.fittedvalues,model.resid_pearson**0.5)
 plt.xlabel('拟合值')
 plt.ylabel('标准化残差的平方根')
+plt.show()
 
 
-penn=pd.read_excel('017/Penn World Table.xlsx',2)
+Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码"
+penn=pd.read_excel(Path+'/017/Penn World Table.xlsx',2)
+PEEN=myfile.read_pd(Path+'/017/Penn World Table.xlsx',sheet_name=2)
+
 penn.head(3)
 import numpy as np
-model=sm.OLS(np.log(penn.rgdpe),
-             sm.add_constant(penn.iloc[:,-6:])).fit()
+model=sm.OLS(np.log(penn.rgdpe),sm.add_constant(penn.iloc[:,-6:])).fit()
 print(model.summary())
+PEEN.columns
+myDA.ols("np.log(rgdpe) ~ pl_c+ pl_i+ pl_g+ pl_x+ pl_m+ pl_k",PEEN,True)
+
 
 penn.iloc[:,-6:].corr()
 
 model=sm.OLS(np.log(penn.rgdpe),\
              sm.add_constant(penn.iloc[:,-5:-1])).fit()
 print(model.summary())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
