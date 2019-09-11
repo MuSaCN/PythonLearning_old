@@ -27,6 +27,36 @@ Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工�
 
 
 
+#9.
+import pandas_datareader.data as web
+
+import datetime as dt
+
+import numpy as np
+
+start = dt.datetime(2014,1,1)
+
+end = dt.datetime(2014,12,31)
+
+baidu = web.DataReader('BIDU','yahoo',start,end)
+
+returns = (baidu.Close - baidu.Close.shift(1))/baidu.Close.shift(1)
+R=myDA.to_returns(baidu.Close)
+
+
+comp_returns = np.log(baidu.Close/baidu.Close.shift(1))
+LR=myDA.to_log_returns(baidu.Close)
+
+
+comp_returns.sum()
+LR.sum()
+np.exp(LR.cumsum()).plot()
+LR.cumsum().plot()
+returns.plot()
+
+plt.show()
+comp_returns.plot()
+
 
 
 
