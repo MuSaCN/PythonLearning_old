@@ -37,7 +37,6 @@ hxyh = stock.ix[stock.Stkcd == 600015, 'Dretwd']
 hxyh.name = 'hxyh'
 byjc = stock.ix[stock.Stkcd == 600004, 'Dretwd']
 byjc.name = 'byjc'
-
 sh_return = pd.concat([byjc, fjgs, hxyh, sykj, zndl], axis=1)
 sh_return = sh_return.dropna()
 cumreturn = (1 + sh_return).cumprod()
@@ -46,23 +45,23 @@ cumreturn = (1 + sh_return).cumprod()
 #import ffn
 from scipy import linalg
 
-
 class MeanVariance:
     def __init__(self, returns):
         self.returns = returns
 
+    # ---计算最优权重(允许卖空/借钱的情况下，权重存在负数)
     def minVar(self, goalRet):
         covs = np.array(self.returns.cov())
         means = np.array(self.returns.mean())
-        L1 = np.append(np.append(covs.swapaxes(0, 1), [means], 0),
-                       [np.ones(len(means))], 0).swapaxes(0, 1)
-        L2 = list(np.ones(len(means)))
-        L2.extend([0, 0])
-        L3 = list(means)
-        L3.extend([0, 0])
-        L4 = np.array([L2, L3])
-        L = np.append(L1, L4, 0)
-        results = linalg.solve(L, np.append(np.zeros(len(means)), [1, goalRet], 0))
+        # ---矩阵拼接得到公式a * x = b 中的 a
+        L1 =np.append(np.append(covs,[np.ones(len(means))],0),[means], 0).swapaxes(0, 1)
+        L2 = list(np.ones(len(means)));L2.extend([0, 0])
+        L3 = list(means);L3.extend([0, 0])
+        a = np.append(L1, np.array([L2, L3]), 0)
+        # ---矩阵拼接得到公式a * x = b 中的 b
+        b = np.append(np.zeros(len(means)), [1, goalRet], 0)
+        # ---Solves the linear equation set a * x = b for the unknown x for square a matrix.
+        results = linalg.solve(a, b)
         return (np.array([list(self.returns.columns), results[:-2]]))
 
     def frontierCurve(self):
@@ -77,12 +76,6 @@ class MeanVariance:
 
     def calVar(self, fracs):
         return (np.dot(np.dot(fracs, self.returns.cov()), fracs))
-
-
-minVar = MeanVariance(sh_return)
-minVar.frontierCurve()
-plt.show()
-
 
 
 
