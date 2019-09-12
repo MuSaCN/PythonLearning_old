@@ -43,7 +43,6 @@ sh_return = sh_return.dropna()
 cumreturn = (1 + sh_return).cumprod()
 
 
-
 #import ffn
 from scipy import linalg
 
@@ -81,8 +80,11 @@ class MeanVariance:
 
 
 minVar = MeanVariance(sh_return)
-
 minVar.frontierCurve()
+plt.show()
+
+
+
 
 train_set = sh_return['2014']
 test_set = sh_return['2015']
