@@ -22,12 +22,11 @@ mytime = MyPackage.MyClass_Time.MyClass_Time()  #时间类
 myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 #MyPackage.MyClass_ToDefault.DefaultMatplotlibBackend()       #恢复默认设置(仅main主界面)
 #------------------------------------------------------------
+Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\019"
+Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
-import pandas as pd
 
-stock = pd.read_table('stock.txt', sep='\t', index_col='Trddt')
-stock.index = pd.to_datetime(stock.index)
-
+stock=myfile.read_pd(Path+'/stock.txt',sep="\t",index="Trddt",parse_dates=True)
 fjgs = stock.ix[stock.Stkcd == 600033, 'Dretwd']
 fjgs.name = 'fjgs'
 zndl = stock.ix[stock.Stkcd == 600023, 'Dretwd']
@@ -40,23 +39,12 @@ byjc = stock.ix[stock.Stkcd == 600004, 'Dretwd']
 byjc.name = 'byjc'
 
 sh_return = pd.concat([byjc, fjgs, hxyh, sykj, zndl], axis=1)
-sh_return.head()
-
 sh_return = sh_return.dropna()
-# sh_return2=sh_return2.dropna()
-sh_return.corr()
-
 cumreturn = (1 + sh_return).cumprod()
-sh_return.plot()
-plt.title('Daily Return of 5 Stocks(2014-2015)')
-plt.legend(loc='lower center', bbox_to_anchor=(0.5, -0.3),
-           ncol=5, fancybox=True, shadow=True)
 
-cumreturn.plot()
-plt.title('Cumulative Return of 5 Stocks(2014-2015)')
-sh_return.corr()
 
-import ffn
+
+#import ffn
 from scipy import linalg
 
 
@@ -84,7 +72,7 @@ class MeanVariance:
         plt.plot(variances, goals)
 
     def meanRet(self, fracs):
-        meanRisky = ffn.to_returns(self.returns).mean()
+        meanRisky = myDA.p_to_returns(self.returns).mean()
         assert len(meanRisky) == len(fracs), 'Length of fractions must be equal to number of assets'
         return (np.sum(np.multiply(meanRisky, np.array(fracs))))
 
