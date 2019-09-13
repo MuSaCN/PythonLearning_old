@@ -25,41 +25,6 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\019"
 Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
-stock=myfile.read_pd(Path+'/stock.txt',sep="\t",index="Trddt",parse_dates=True)
-fjgs = stock.ix[stock.Stkcd == 600033, 'Dretwd']
-fjgs.name = 'fjgs'
-zndl = stock.ix[stock.Stkcd == 600023, 'Dretwd']
-zndl.name = 'zndl'
-sykj = stock.ix[stock.Stkcd == 600183, 'Dretwd']
-sykj.name = 'sykj'
-hxyh = stock.ix[stock.Stkcd == 600015, 'Dretwd']
-hxyh.name = 'hxyh'
-byjc = stock.ix[stock.Stkcd == 600004, 'Dretwd']
-byjc.name = 'byjc'
-sh_return = pd.concat([byjc, fjgs, hxyh, sykj, zndl], axis=1)
-sh_return = sh_return.dropna()
-cumreturn = (1 + sh_return).cumprod()
-
-
-train_set = sh_return['2014']
-test_set = sh_return['2015']
-
-P = np.array([[ 1. ,  0. ,  1. ,  1. ,  1. ],
-              [ 0.5,  0.5,  0. ,  0. , -1. ]])
-Q = np.array([0.003,0.001])
-
-P1 = np.array([[ 1. ,  0. ,  1. ,  1. ,  1. ],
-               [ 1,    0,    0. ,  0. , -1. ],
-               [ 0,    1,    0. ,  0. , -1. ]])
-Q1 = np.array([0.003,0.001,0.001])
-
-
-myDA.BlackLitterman_OptWeight(sh_return,0.3,P,Q,0.002)
-
-myDA.BlackLitterman_OptWeight(sh_return,0.3,P1,Q1,0.002)
-
-
-
-
-
+import pandas_datareader.data as web
+import datetime as dt
 
