@@ -47,15 +47,6 @@ from scipy import linalg
 train_set = sh_return['2014']
 test_set = sh_return['2015']
 
-myDA.r_to_price(test_set).plot()
-plt.show()
-myDA.Markowitz_OptWeight(train_set,0.006)
-
-myDA.Markowitz_TrainAndTest(train_set,test_set,0.006,False)
-
-
-
-
 
 def blacklitterman(returns, tau, P, Q):
     mu = returns.mean()
