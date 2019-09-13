@@ -25,7 +25,6 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\019"
 Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
-
 stock=myfile.read_pd(Path+'/stock.txt',sep="\t",index="Trddt",parse_dates=True)
 fjgs = stock.ix[stock.Stkcd == 600033, 'Dretwd']
 fjgs.name = 'fjgs'
@@ -41,63 +40,21 @@ sh_return = pd.concat([byjc, fjgs, hxyh, sykj, zndl], axis=1)
 sh_return = sh_return.dropna()
 cumreturn = (1 + sh_return).cumprod()
 
-
 #import ffn
 from scipy import linalg
-
-class MeanVariance:
-    def __init__(self, returns):
-        self.returns = returns
-
-    # ---计算最优权重(允许卖空/借钱的情况下，权重存在负数)
-    def minVar(self, goalRet):
-        covs = np.array(self.returns.cov())
-        means = np.array(self.returns.mean())
-        # ---矩阵拼接得到公式a * x = b 中的 a
-        L1 =np.append(np.append(covs,[np.ones(len(means))],0),[means], 0).swapaxes(0, 1)
-        L2 = list(np.ones(len(means)));L2.extend([0, 0])
-        L3 = list(means);L3.extend([0, 0])
-        a = np.append(L1, np.array([L2, L3]), 0)
-        # ---矩阵拼接得到公式a * x = b 中的 b
-        b = np.append(np.zeros(len(means)), [1, goalRet], 0)
-        # ---Solves the linear equation set a * x = b for the unknown x for square a matrix.
-        results = linalg.solve(a, b)
-        return (np.array([list(self.returns.columns), results[:-2]]))
-
-    def frontierCurve(self):
-        goals = [x / 500000 for x in range(-100, 4000)]
-        variances = list(map(lambda x: self.calVar(self.minVar(x)[1, :].astype(np.float)), goals))
-        plt.plot(variances, goals)
-
-    def meanRet(self, fracs):
-        meanRisky = myDA.p_to_returns(self.returns).mean()
-        assert len(meanRisky) == len(fracs), 'Length of fractions must be equal to number of assets'
-        return (np.sum(np.multiply(meanRisky, np.array(fracs))))
-
-    def calVar(self, fracs):
-        return (np.dot(np.dot(fracs, self.returns.cov()), fracs))
-
 
 
 train_set = sh_return['2014']
 test_set = sh_return['2015']
-varMinimizer = MeanVariance(train_set)
-goal_return = 0.003
-portfolio_weight = varMinimizer.minVar(goal_return)
-portfolio_weight
-test_return = np.dot(test_set,
-                     np.array([portfolio_weight[1, :].astype(np.float)]).swapaxes(0, 1))
-test_return = pd.DataFrame(test_return, index=test_set.index)
-test_cum_return = (1 + test_return).cumprod()
 
-sim_weight = np.random.uniform(0, 1, (100, 5))
-sim_weight = np.apply_along_axis(lambda x: x / sum(x), 1, sim_weight)
-sim_return = np.dot(test_set, sim_weight.swapaxes(0, 1))
-sim_return = pd.DataFrame(sim_return, index=test_cum_return.index)
-sim_cum_return = (1 + sim_return).cumprod()
+myDA.r_to_price(test_set).plot()
+plt.show()
+myDA.Markowitz_OptWeight(train_set,0.006)
 
-plt.plot(sim_cum_return.index, sim_cum_return, color='green')
-plt.plot(test_cum_return.index, test_cum_return)
+myDA.Markowitz_TrainAndTest(train_set,test_set,0.006,False)
+
+
+
 
 
 def blacklitterman(returns, tau, P, Q):
