@@ -46,9 +46,17 @@ test_set = sh_return['2015']
 
 P = np.array([[ 1. ,  0. ,  1. ,  1. ,  1. ],
               [ 0.5,  0.5,  0. ,  0. , -1. ]])
-Q = np.array([0.012,0.001])
+Q = np.array([0.003,0.001])
+
+P1 = np.array([[ 1. ,  0. ,  1. ,  1. ,  1. ],
+               [ 1,    0,    0. ,  0. , -1. ],
+               [ 0,    1,    0. ,  0. , -1. ]])
+Q1 = np.array([0.003,0.001,0.001])
+
 
 myDA.BlackLitterman_OptWeight(sh_return,0.3,P,Q,0.002)
+
+myDA.BlackLitterman_OptWeight(sh_return,0.3,P1,Q1,0.002)
 
 
 
