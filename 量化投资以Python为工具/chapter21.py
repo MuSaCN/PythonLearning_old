@@ -25,7 +25,7 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\021"
 Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
-
+import pandas as pd
 import pandas_datareader.data as web
 import datetime as dt
 import statsmodels.formula.api as smf
@@ -137,8 +137,6 @@ alpha_CAPM2[:3]
 alpha_factors = list(map(create_func('factors'), codes[0]))
 alpha_factors2 = pd.Series(alpha_factors).sort(ascending=False, inplace=False)
 alpha_factors2[:3]
-
-
 
 
 

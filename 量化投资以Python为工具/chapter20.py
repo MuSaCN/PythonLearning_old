@@ -46,8 +46,9 @@ dat = pd.concat([mktret, returns], 1)
 dat = dat - rf
 
 
-myDA.CAMP(dat.Close,dat.mktret)
-model = smf.ols('Close~mktret', data=dat).fit()
+myDA.CAMP(dat.Close,dat.Close,Rf=0,DrawScatter=True)
+
+model = smf.ols('Close~Close', data=dat).fit()
 print(model.summary())
 
 # 9.
