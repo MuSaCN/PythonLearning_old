@@ -22,7 +22,25 @@ mytime = MyPackage.MyClass_Time.MyClass_Time()  #时间类
 myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 #MyPackage.MyClass_ToDefault.DefaultMatplotlibBackend()       #恢复默认设置(仅main主界面)
 #------------------------------------------------------------
+Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\022"
+Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
 
+#2.
+Yen=pd.read_csv(Path2+'/Part4/001/Yen.csv',index_col='date')
+Yen.index=pd.to_datetime(Yen.index,format='%Y%m%d')
 
+Yen=myfile.read_pd(Path2+'/Part4/001/Yen.csv',index="date",parse_dates=True)
+
+#3.
+Yen.s.plot()
+plt.show()
+
+#4.
+pfyh=pd.read_csv(Path2+'/Part4/001/pfyh.csv',index_col='Date')
+pfyh.index=pd.to_datetime(pfyh.index,format='%Y-%m-%d')
+returns=(pfyh.Close-pfyh.Close.shift(1))/pfyh.Close.shift(1)
+returns=returns[1:]
+returns.plot()
+plt.show()
 
