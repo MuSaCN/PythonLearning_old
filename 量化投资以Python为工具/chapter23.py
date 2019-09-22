@@ -25,9 +25,48 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 Path="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\数据及源代码\\023"
 Path2="C:\\Users\\i2011\\OneDrive\\Book_Code&Data\\量化投资以python为工具\\习题解答"
 
+#5.
+CRSPday=pd.read_csv(Path2+'/Part4/002/CRSPday.csv')
+ibm=CRSPday.ibm
+ibm.plot()
+plt.show()
+myDA.acf(ibm,nlags=20,plot=True)
+myDA.acf(ibm,nlags=20,qstat=True)
 
+from statsmodels.graphics.tsaplots import *
+plot_acf(ibm,lags=20)
 
+from statsmodels.tsa import stattools
+LjungBox=stattools.q_stat(stattools.acf(ibm)[1:13],len(ibm))
+LjungBox[1][-1]
 
+#6.
+ge=CRSPday.iloc[:,3]
+ge.plot()
+plt.show()
+plot_acf(ge,lags=20)
+
+LjungBox=stattools.q_stat(stattools.acf(ge)[1:2],len(ge))
+LjungBox[1][-1]
+
+myDA.acf(ge,nlags=9,qstat=True)
+
+LjungBox=stattools.q_stat(stattools.acf(ge)[1:9],len(ge))
+LjungBox[1][-1]
+
+#7.
+SP500=pd.read_csv(Path2+'/Part4/002/SP500.csv')
+r500=SP500.r500
+r500.plot()
+
+plot_acf(r500,lags=20)
+plot_pacf(r500,lags=20)
+
+from arch.unitroot import ADF
+adf=ADF(r500,lags=3)
+print(adf.summary().as_text())
+plt.show()
+myDA.ADF(r500)
 
 
 
