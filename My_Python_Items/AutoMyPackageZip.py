@@ -23,12 +23,9 @@ myDA = MyPackage.MyClass_DataAnalysis.MyClass_DataAnalysis()  #数据分析类
 #MyPackage.MyClass_ToDefault.DefaultMatplotlibBackend()       #恢复默认设置(仅main主界面)
 #------------------------------------------------------------
 
-dirpath = 'C:\\Users\\i2011\\PycharmProjects\\PythonLearning\\My_Python_Items'
+MyPackage_PathList = __mypath__.GetMyPackagePath()
+myfile.ZipDir(MyPackage_PathList[0], zipPath="Desktop" , zipName=None, autoName=True)
 
-myfile.ZipDir(dirpath, zipPath="Desktop" , zipName="123.zip", autoName=True)
 
-
-import sys
-sys.path
 
 
