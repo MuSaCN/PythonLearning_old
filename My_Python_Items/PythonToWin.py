@@ -4,7 +4,7 @@
     # 打开：View-Tool Windows-Terminal
     # 输入：pip install pyinstaller
 
-# 生成exe文件
+# 生成exe文件(64位系统有问题)
     # Terminal中输入：“pyinstaller -F -w *.py” 就可以制作出exe。
     # 注：星号用相应的文件名进行替换即可。
     # 　　生成的文件放在同目录dist下。
