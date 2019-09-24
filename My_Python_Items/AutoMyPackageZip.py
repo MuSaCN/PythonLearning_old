@@ -28,3 +28,7 @@ dirpath = 'C:\\Users\\i2011\\PycharmProjects\\PythonLearning\\My_Python_Items'
 myfile.ZipDir(dirpath, zipPath="Desktop" , zipName="123.zip", autoName=True)
 
 
+import sys
+sys.path
+
+
