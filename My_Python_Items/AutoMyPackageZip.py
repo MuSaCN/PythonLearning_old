@@ -1,10 +1,9 @@
 # Author:Zhang Yuan
+import MyPackage
 
-from MyPackage import MyClass_Path
-from MyPackage import MyClass_File
 
-__mypath__ = MyClass_Path.MyClass_Path()  #路径类
-myfile = MyClass_File.MyClass_File()  #文件操作类
+__mypath__ = MyPackage.MyClass_Path.MyClass_Path()  #路径类
+myfile = MyPackage.MyClass_File.MyClass_File()  #文件操作类
 
 MyPackage_PathList = __mypath__.GetMyPackagePath()
 
